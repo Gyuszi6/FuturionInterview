@@ -3,7 +3,9 @@ import styled from "styled-components";
 export const HeaderContainer = styled.div`
   width: 100%;
   height: 100px;
-  background: grey;
+  background: #33a9d4;
+  position: fixed;
+  top: 0;
 `;
 
 export const HeaderButtonContainer = styled.div`

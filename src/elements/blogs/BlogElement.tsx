@@ -5,10 +5,11 @@ import {
   Date,
   TitleContainer,
   AdminButtonContainer,
-  AdminButton,
+  ModifyBlogButton,
+  DeleteBlogButton,
 } from "./styles";
 import { AiFillDelete } from "react-icons/ai";
-import { BiMenu } from "react-icons/bi";
+import { BiEditAlt } from "react-icons/bi";
 import { useSelector, useDispatch } from "react-redux";
 import useBlogs from "./hooks/useBlogs";
 import useComment from "../comments/hooks/useComment";
@@ -53,7 +54,7 @@ const BlogElement = ({ id, name, date, text }: BlogType) => {
       </DateContainer>
       {userState === "admin" && (
         <AdminButtonContainer>
-          <AdminButton
+          <ModifyBlogButton
             onClick={() => {
               dispatch(SET_CURRENT_BLOG_ID(id));
               dispatch(SET_CURRENT_BLOG_TITLE(name));
@@ -61,16 +62,16 @@ const BlogElement = ({ id, name, date, text }: BlogType) => {
               nav("/modify");
             }}
           >
-            <BiMenu />
-          </AdminButton>
-          <AdminButton
+            <BiEditAlt />
+          </ModifyBlogButton>
+          <DeleteBlogButton
             onClick={async () => {
               await deleteBlog(id);
               await getBlogs();
             }}
           >
             <AiFillDelete />
-          </AdminButton>
+          </DeleteBlogButton>
         </AdminButtonContainer>
       )}
     </BlogCard>
