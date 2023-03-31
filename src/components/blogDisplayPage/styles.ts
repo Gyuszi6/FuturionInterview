@@ -18,6 +18,7 @@ export const ImageContainer = styled.div`
 `;
 
 export const TextContainer = styled.div`
+  width: 100%;
   padding-top: 8px;
   padding-right: 15px;
   padding-left: 15px;

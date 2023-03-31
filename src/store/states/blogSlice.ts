@@ -2,8 +2,14 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState = {
   blogs: [],
-  currentPage: 0,
-  totalPage: 0,
+  currentPage: Number(
+    localStorage.getItem("currentPage")
+      ? localStorage.getItem("currentPage")
+      : 1
+  ),
+  totalPage: Number(
+    localStorage.getItem("totalPage") ? localStorage.getItem("totalPage") : 1
+  ),
   currentBlogId: localStorage.getItem("currentBlogId")
     ? localStorage.getItem("currentBlogId")
     : 0,
@@ -27,9 +33,11 @@ const blogSlice = createSlice({
     },
     SET_CURRENT_PAGE: (state, action: PayloadAction<number>) => {
       state.currentPage = action.payload;
+      localStorage.setItem("currentPage", action.payload.toString());
     },
     SET_TOTAL_PAGE: (state, action: PayloadAction<number>) => {
       state.totalPage = action.payload;
+      localStorage.setItem("totalPage", action.payload.toString());
     },
     SET_CURRENT_BLOG_ID: (state, action: PayloadAction<number>) => {
       state.currentBlogId = action.payload;

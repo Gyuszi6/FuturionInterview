@@ -1,24 +1,39 @@
 import BlogElement from "./BlogElement";
 import { useSelector, useDispatch } from "react-redux";
 import useBlogs from "../../elements/blogs/hooks/useBlogs";
-import { PageContainer, ChangePageButton, PageText } from "./styles";
+import {
+  PageContainer,
+  ChangePageButton,
+  PageText,
+  CreateBlogButton,
+  BlogListContainer,
+  CreateBlogButtonContainer,
+} from "./styles";
 import { SET_CURRENT_PAGE } from "../../store/states/blogSlice";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import { useNavigate } from "react-router";
+import { useEffect } from "react";
 
 const BlogList = () => {
   const { getBlogs, getBlogsFromCurrentPage } = useBlogs();
   const dispatch = useDispatch();
+  const nav = useNavigate();
   const { blogs, currentPage, totalPage } = useSelector(
     (state: any) => state.blog
   );
+  useEffect(() => {
+    getBlogs();
+  }, []);
+
+  const { userState } = useSelector((state: any) => state.user);
   return (
-    <>
+    <BlogListContainer>
       <PageContainer>
         <ChangePageButton
           onClick={async () => {
             if (currentPage > 1) {
-              dispatch(SET_CURRENT_PAGE(currentPage - 1));
-              await getBlogsFromCurrentPage(currentPage);
+              dispatch(SET_CURRENT_PAGE(Number(currentPage) - 1));
+              await getBlogsFromCurrentPage(currentPage - 1);
             }
           }}
         >
@@ -29,14 +44,25 @@ const BlogList = () => {
         <ChangePageButton
           onClick={async () => {
             if (currentPage < totalPage) {
-              dispatch(SET_CURRENT_PAGE(currentPage + 1));
-              await getBlogsFromCurrentPage(currentPage);
+              dispatch(SET_CURRENT_PAGE(Number(currentPage) + 1));
+              await getBlogsFromCurrentPage(currentPage + 1);
             }
           }}
         >
           <AiOutlineArrowRight />
         </ChangePageButton>
       </PageContainer>
+      {userState === "admin" && (
+        <CreateBlogButtonContainer>
+          <CreateBlogButton
+            onClick={() => {
+              nav("/post");
+            }}
+          >
+            +
+          </CreateBlogButton>
+        </CreateBlogButtonContainer>
+      )}
       <div>
         {blogs.map((blog: any) => {
           const date =
@@ -53,7 +79,7 @@ const BlogList = () => {
           );
         })}
       </div>
-    </>
+    </BlogListContainer>
   );
 };
 

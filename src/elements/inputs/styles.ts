@@ -24,3 +24,15 @@ export const CommentTextArea = styled.textarea`
 `;
 
 export const UserNameInputField = styled.input``;
+
+export const BlogFormInputContainer = styled.div`
+  display: block;
+`;
+
+export const BlogTitleInputBox = styled.input`
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 50px;
+`;

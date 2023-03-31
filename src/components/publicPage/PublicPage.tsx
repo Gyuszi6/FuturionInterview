@@ -3,10 +3,10 @@ import BlogList from "../../elements/blogs/BlogList";
 
 const PublicPage = () => {
   return (
-    <div>
+    <>
       <Header />
       <BlogList />
-    </div>
+    </>
   );
 };
 

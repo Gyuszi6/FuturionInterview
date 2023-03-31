@@ -1,6 +1,6 @@
 import { ApiInstance } from "../../../api/api";
-import { useCallback, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   SET_BLOGS,
   SET_CURRENT_BLOG_ID,
@@ -14,19 +14,22 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 
 const useBlogs = () => {
+  const { currentPage } = useSelector((state: any) => state.blog);
   const dispatch = useDispatch();
   const nav = useNavigate();
   const getBlogs = useCallback(async () => {
     try {
-      const response = await ApiInstance.get("/BlogPost");
+      const response = await ApiInstance.get(
+        `/BlogPost?page=${currentPage}&pageSize=12`
+      );
       const data = response.data;
       dispatch(SET_TOTAL_PAGE(data.totalPage));
-      dispatch(SET_CURRENT_PAGE(1));
+      dispatch(SET_CURRENT_PAGE(currentPage));
       dispatch(SET_BLOGS(data.results));
     } catch (error) {
       console.log(error);
     }
-  }, [dispatch]);
+  }, [dispatch, currentPage]);
 
   const getBlogsFromCurrentPage = useCallback(
     async (page: number) => {
@@ -63,10 +66,6 @@ const useBlogs = () => {
     },
     [dispatch, nav]
   );
-
-  useEffect(() => {
-    getBlogs();
-  }, [getBlogs]);
 
   return { getBlogs, getBlogsFromCurrentPage, getCurrentBlog };
 };

@@ -66,13 +66,33 @@ export const ChangePageButton = styled.button`
   background: transparent;
   height: 30px;
   margin-top: 12px;
-  margin-right: 5px;
-  margin-left: 5px;
+  margin-right: 12px;
+  margin-left: 12px;
   font-size: 18px;
+  border: none;
 `;
 
 export const PageText = styled.p`
   height: 30px;
   font-size: 18px;
   margin-top: 14px;
+`;
+
+export const BlogListContainer = styled.div``;
+
+export const CreateBlogButtonContainer = styled.div`
+  display: flex;
+  width: 100%;
+`;
+
+export const CreateBlogButton = styled.button`
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 70px;
+  height: 70px;
+  border-radius: 32px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 55px;
+  cursor: pointer;
 `;

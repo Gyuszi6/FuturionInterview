@@ -1,7 +1,7 @@
 import { ApiInstance } from "../../../api/api";
 import { useSelector, useDispatch } from "react-redux";
 import { SET_COMMENTS } from "../../../store/states/commentSlice";
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 
 const useComment = () => {
   const { currentBlogId } = useSelector((state: any) => state.blog);

@@ -11,12 +11,12 @@ const commentSchema = yup.object().shape({
     .string()
     .required("User name is required")
     .trim()
-    .matches(/^[A-Za-z0-9]{1,20}$/i, "Incorrect User Name"),
+    .matches(/^[A-Za-z0-9_ ]{1,20}$/i, "Incorrect User Name"),
   comment: yup
     .string()
     .required("Comment text is required")
     .trim()
-    .matches(/^[A-Za-z0-9]{1,300}$/i, "Incorrect Comment"),
+    .matches(/^[A-Za-z0-9_ ]{1,300}$/i, "Incorrect Comment"),
 });
 
 const CommentForm = () => {
