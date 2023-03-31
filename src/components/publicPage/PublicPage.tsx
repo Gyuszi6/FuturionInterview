@@ -1,10 +1,11 @@
 import Header from "../../elements/header/Header";
+import BlogList from "../../elements/blogs/BlogList";
 
 const PublicPage = () => {
   return (
     <div>
       <Header />
-      <p>Public</p>
+      <BlogList />
     </div>
   );
 };
