@@ -1,21 +1,22 @@
 import { HeaderButton, HeaderButtonContainer, HeaderContainer } from "./styles";
-import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { SET_USER } from "../../store/states/userSlice";
 
 const Header = () => {
-  const nav = useNavigate();
+  const dispatch = useDispatch();
   return (
     <HeaderContainer>
       <HeaderButtonContainer>
         <HeaderButton
           onClick={() => {
-            nav("/public");
+            dispatch(SET_USER("public"));
           }}
         >
           Public
         </HeaderButton>
         <HeaderButton
           onClick={() => {
-            nav("/admin");
+            dispatch(SET_USER("admin"));
           }}
         >
           Admin

@@ -15,7 +15,8 @@ export const HeaderButton = styled.button`
   cursor: pointer;
   width: 100px;
   height: 40px;
-  margin-right: 60px;
+  margin-left: 30px;
+  margin-right: 30px;
   margin-top: 30px;
   background: transparent;
   border: none;
@@ -23,5 +24,6 @@ export const HeaderButton = styled.button`
 
   &:hover {
     text-decoration: underline;
+    font-weight: bold;
   }
 `;
