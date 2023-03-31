@@ -2,7 +2,7 @@ import { Formik, Form, Field } from "formik";
 import * as yup from "yup";
 import TitleInput from "../../elements/inputs/TitleInput";
 import BlogTextInput from "../../elements/inputs/BlogTextInput";
-import { SavePostButton } from "./styles";
+import { FormContainer, SavePostButton, TitleContainer } from "./styles";
 import useModifyBlogs from "./hooks/useModifyBlogs";
 import useBlogs from "../../elements/blogs/hooks/useBlogs";
 import { useSelector } from "react-redux";
@@ -26,36 +26,40 @@ const ModifyBlogForm = () => {
   const { getBlogsFromCurrentPage } = useBlogs();
   const { modifyBlogs } = useModifyBlogs();
   return (
-    <Formik
-      initialValues={{ title: currentBlogTitle, blogText: currentBlogText }}
-      validateOnMount={true}
-      enableReinitialize={true}
-      validationSchema={blogSchema}
-      onSubmit={async ({ title, blogText }) => {
-        await modifyBlogs(currentBlogId, title, blogText);
-        await getBlogsFromCurrentPage(currentPage);
-      }}
-    >
-      {({ setFieldValue }) => (
-        <Form>
-          <div>
-            <Field
-              as={TitleInput}
-              name="title"
-              label="Title"
-              setFieldValue={setFieldValue}
-            />
-            <Field
-              as={BlogTextInput}
-              name="blogText"
-              label="Blog"
-              setFieldValue={setFieldValue}
-            />
-            <SavePostButton type="submit">Save</SavePostButton>
-          </div>
-        </Form>
-      )}
-    </Formik>
+    <FormContainer>
+      <Formik
+        initialValues={{ title: currentBlogTitle, blogText: currentBlogText }}
+        validateOnMount={true}
+        enableReinitialize={true}
+        validationSchema={blogSchema}
+        onSubmit={async ({ title, blogText }) => {
+          await modifyBlogs(currentBlogId, title, blogText);
+          await getBlogsFromCurrentPage(currentPage);
+        }}
+      >
+        {({ setFieldValue }) => (
+          <Form>
+            <div>
+              <TitleContainer>
+                <Field
+                  as={TitleInput}
+                  name="title"
+                  label="Title:"
+                  setFieldValue={setFieldValue}
+                />
+                <SavePostButton type="submit">Save</SavePostButton>
+              </TitleContainer>
+              <Field
+                as={BlogTextInput}
+                name="blogText"
+                label="Blog"
+                setFieldValue={setFieldValue}
+              />
+            </div>
+          </Form>
+        )}
+      </Formik>
+    </FormContainer>
   );
 };
 

@@ -3,9 +3,7 @@ import styled from "styled-components";
 export const HeaderContainer = styled.div`
   width: 100%;
   height: 100px;
-  background: #33a9d4;
-  position: fixed;
-  top: 0;
+  padding-top: 10px;
 `;
 
 export const HeaderButtonContainer = styled.div`

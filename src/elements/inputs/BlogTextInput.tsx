@@ -1,4 +1,4 @@
-import { BlogFormInputContainer, Label } from "./styles";
+import { BlogFormContentContainer, Label, BlogTextArea } from "./styles";
 
 type blogTextInputType = {
   name: string;
@@ -14,14 +14,14 @@ const BlogTextInput = ({
   label,
 }: blogTextInputType) => {
   return (
-    <BlogFormInputContainer>
+    <BlogFormContentContainer>
       <Label>{label}</Label>
-      <input
+      <BlogTextArea
         name={name}
         value={value}
         onChange={(event) => setFieldValue(name, event.target.value)}
       />
-    </BlogFormInputContainer>
+    </BlogFormContentContainer>
   );
 };
 

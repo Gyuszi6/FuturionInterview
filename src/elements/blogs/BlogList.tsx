@@ -8,6 +8,9 @@ import {
   CreateBlogButton,
   BlogListContainer,
   CreateBlogButtonContainer,
+  HorizontalDivider,
+  BlogCardContainer,
+  CreateButtonLabel,
 } from "./styles";
 import { SET_CURRENT_PAGE } from "../../store/states/blogSlice";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
@@ -61,25 +64,34 @@ const BlogList = () => {
           >
             +
           </CreateBlogButton>
+          <CreateButtonLabel
+            onClick={() => {
+              nav("/create");
+            }}
+          >
+            Create new post
+          </CreateButtonLabel>
         </CreateBlogButtonContainer>
       )}
-      <div>
+      <BlogCardContainer>
         {blogs.map((blog: any) => {
           const date =
             blog.createdAt.slice(0, 10) +
             " " +
-            blog.createdAt.slice(12, 20).replace(".", "");
+            blog.createdAt.slice(11, 20).replace(".", "");
           return (
-            <BlogElement
-              key={blog.id}
-              id={blog.id}
-              name={blog.title}
-              date={date}
-              text={blog.body}
-            />
+            <div key={blog.id}>
+              <BlogElement
+                id={blog.id}
+                name={blog.title}
+                date={date}
+                text={blog.body}
+              />
+              <HorizontalDivider />
+            </div>
           );
         })}
-      </div>
+      </BlogCardContainer>
     </BlogListContainer>
   );
 };

@@ -6,20 +6,30 @@ export const BlogCard = styled.div`
   display: flex;
   margin-left: auto;
   margin-right: auto;
-  justify-content: space-between;
-  background: linear-gradient(0, #64c34c, #d1d873);
-  margin-bottom: 20px;
+  border: 0;
+  border-radius: 8px;
+  background: linear-gradient(45deg, #eb788f, #ffe3bc);
+
+  &:hover {
+    box-shadow: 0px 6px 12px 3px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
+  }
 `;
+
+export const BlogCardContainer = styled.div``;
 
 export const TitleContainer = styled.div`
   width: 80%;
   height: 100px;
-  text-align: center;
+  padding: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
+  border: 0;
 `;
 
 export const Title = styled.p`
-  margin-top: 25px;
   font-size: 19px;
   font-weight: bold;
 `;
@@ -29,6 +39,7 @@ export const DateContainer = styled.div`
   height: 100px;
   text-align: center;
   cursor: pointer;
+  border: 0;
 `;
 
 export const Date = styled.p`
@@ -40,6 +51,7 @@ export const AdminButtonContainer = styled.div`
   width: 10%;
   height: 100px;
   justify-content: center;
+  border: 0;
 `;
 
 export const ModifyBlogButton = styled.button`
@@ -51,7 +63,7 @@ export const ModifyBlogButton = styled.button`
   font-size: 22px;
   font-weight: bold;
   border: none;
-  color: green;
+
   cursor: pointer;
 `;
 
@@ -62,16 +74,15 @@ export const DeleteBlogButton = styled.button`
   margin-right: auto;
   background: transparent;
   font-size: 22px;
-  font-weight: bold;
-  border: none;
-  color: red;
+  border: 0;
+  color: #870303;
   cursor: pointer;
 `;
 
 export const PageContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 100px;
+  margin: 30px 0 20px;
   height: 60px;
 `;
 
@@ -94,21 +105,45 @@ export const PageText = styled.p`
   font-weight: bold;
 `;
 
-export const BlogListContainer = styled.div``;
+export const BlogListContainer = styled.div`
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 30px;
+  justify-content: center;
+  margin: 20px auto 60px;
+  border-radius: 6px;
+  background: white;
+`;
+
+export const HorizontalDivider = styled.div`
+  margin: 15px 0;
+  width: 45%;
+  height: 1px;
+  margin-left: auto;
+  margin-right: auto;
+  background: linear-gradient(90deg, white, #73716f, white);
+`;
 
 export const CreateBlogButtonContainer = styled.div`
   display: flex;
-  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  width: fit-content;
+  margin: 0 auto 30px;
+`;
+
+export const CreateButtonLabel = styled.p`
+  margin: 5px auto;
+  cursor: pointer;
 `;
 
 export const CreateBlogButton = styled.button`
-  margin-top: 30px;
-  margin-bottom: 30px;
-  width: 70px;
-  height: 70px;
+  width: 45px;
+  height: 45px;
   border-radius: 32px;
   margin-left: auto;
   margin-right: auto;
-  font-size: 55px;
+  font-size: 35px;
   cursor: pointer;
 `;

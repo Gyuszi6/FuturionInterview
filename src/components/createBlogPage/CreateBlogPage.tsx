@@ -1,4 +1,8 @@
-import { LeavePageButton, CreateBlogPageContainer } from "./styles";
+import {
+  LeavePageButton,
+  CreateBlogPageContainer,
+  PageContainer,
+} from "./styles";
 import { useNavigate } from "react-router";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import CreateBlogForm from "./CreateBlogForm";
@@ -6,7 +10,7 @@ import CreateBlogForm from "./CreateBlogForm";
 const CreateBlogPage = () => {
   const nav = useNavigate();
   return (
-    <>
+    <PageContainer>
       <LeavePageButton
         onClick={() => {
           nav("/home");
@@ -17,7 +21,7 @@ const CreateBlogPage = () => {
       <CreateBlogPageContainer>
         <CreateBlogForm />
       </CreateBlogPageContainer>
-    </>
+    </PageContainer>
   );
 };
 

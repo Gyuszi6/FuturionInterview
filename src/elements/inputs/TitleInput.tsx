@@ -1,4 +1,8 @@
-import { BlogFormInputContainer, Label, BlogTitleInputBox } from "./styles";
+import {
+  BlogFormInputContainer,
+  BlogTitleLabel,
+  BlogTitleInputBox,
+} from "./styles";
 
 type titleInputType = {
   name: string;
@@ -10,7 +14,7 @@ type titleInputType = {
 const TitleInput = ({ name, setFieldValue, value, label }: titleInputType) => {
   return (
     <BlogFormInputContainer>
-      <Label>{label}</Label>
+      <BlogTitleLabel>{label}</BlogTitleLabel>
       <BlogTitleInputBox
         name={name}
         value={value}
