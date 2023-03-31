@@ -1,9 +1,9 @@
-import { LeavePageButton, CreateBlogPageContainer } from "./styles";
+import { LeavePageButton, ModifyBlogPageContainer } from "./styles";
 import { useNavigate } from "react-router";
 import { AiOutlineArrowLeft } from "react-icons/ai";
-import CreateBlogForm from "./CreateBlogForm";
+import ModifyBlogForm from "./ModifyBlogForm";
 
-const CreateBlogPage = () => {
+const ModifyBlogpage = () => {
   const nav = useNavigate();
   return (
     <>
@@ -14,11 +14,11 @@ const CreateBlogPage = () => {
       >
         <AiOutlineArrowLeft />
       </LeavePageButton>
-      <CreateBlogPageContainer>
-        <CreateBlogForm />
-      </CreateBlogPageContainer>
+      <ModifyBlogPageContainer>
+        <ModifyBlogForm />
+      </ModifyBlogPageContainer>
     </>
   );
 };
 
-export default CreateBlogPage;
+export default ModifyBlogpage;

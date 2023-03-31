@@ -3,7 +3,7 @@ import * as yup from "yup";
 import TitleInput from "../../elements/inputs/TitleInput";
 import BlogTextInput from "../../elements/inputs/BlogTextInput";
 import { SavePostButton } from "./styles";
-import useChangeBlogs from "./hooks/useChangeBlogs";
+import useModifyBlogs from "./hooks/useModifyBlogs";
 import useBlogs from "../../elements/blogs/hooks/useBlogs";
 import { useSelector } from "react-redux";
 
@@ -20,20 +20,19 @@ const blogSchema = yup.object().shape({
     .matches(/^[A-Za-z0-9_ ]{1,500}$/i, "Incorrect blog text"),
 });
 
-const BlogForm = () => {
-  const { currentPage } = useSelector((state: any) => state.blog);
+const ModifyBlogForm = () => {
+  const { currentPage, currentBlogId, currentBlogTitle, currentBlogText } =
+    useSelector((state: any) => state.blog);
   const { getBlogsFromCurrentPage } = useBlogs();
-  const { createBlog } = useChangeBlogs();
+  const { modifyBlogs } = useModifyBlogs();
   return (
     <Formik
-      initialValues={{ title: "", blogText: "" }}
+      initialValues={{ title: currentBlogTitle, blogText: currentBlogText }}
       validateOnMount={true}
       enableReinitialize={true}
       validationSchema={blogSchema}
       onSubmit={async ({ title, blogText }) => {
-        console.log(title);
-        console.log(blogText);
-        await createBlog(title, blogText);
+        await modifyBlogs(currentBlogId, title, blogText);
         await getBlogsFromCurrentPage(currentPage);
       }}
     >
@@ -60,4 +59,4 @@ const BlogForm = () => {
   );
 };
 
-export default BlogForm;
+export default ModifyBlogForm;

@@ -17,6 +17,7 @@ const useBlogs = () => {
   const { currentPage } = useSelector((state: any) => state.blog);
   const dispatch = useDispatch();
   const nav = useNavigate();
+
   const getBlogs = useCallback(async () => {
     try {
       const response = await ApiInstance.get(
@@ -67,7 +68,15 @@ const useBlogs = () => {
     [dispatch, nav]
   );
 
-  return { getBlogs, getBlogsFromCurrentPage, getCurrentBlog };
+  const deleteBlog = async (id: number) => {
+    try {
+      await ApiInstance.delete(`/BlogPost/${id}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return { getBlogs, getBlogsFromCurrentPage, getCurrentBlog, deleteBlog };
 };
 
 export default useBlogs;

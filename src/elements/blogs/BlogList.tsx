@@ -56,7 +56,7 @@ const BlogList = () => {
         <CreateBlogButtonContainer>
           <CreateBlogButton
             onClick={() => {
-              nav("/post");
+              nav("/create");
             }}
           >
             +
@@ -75,6 +75,7 @@ const BlogList = () => {
               id={blog.id}
               name={blog.title}
               date={date}
+              text={blog.body}
             />
           );
         })}

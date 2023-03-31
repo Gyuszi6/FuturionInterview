@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import { ApiInstance } from "../../../api/api";
 
-const useChangeBlogs = () => {
+const useCreateBlogs = () => {
   const nav = useNavigate();
   const createBlog = async (title: string, text: string) => {
     try {
@@ -17,4 +17,4 @@ const useChangeBlogs = () => {
   return { createBlog };
 };
 
-export default useChangeBlogs;
+export default useCreateBlogs;
