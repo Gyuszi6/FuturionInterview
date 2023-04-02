@@ -12,6 +12,10 @@ export const LeavePageButton = styled.button`
   cursor: pointer;
   border: none;
   background: transparent;
+
+  @media screen and (max-width: 800px) {
+    margin-left: 25px;
+  }
 `;
 
 export const CreateBlogPageContainer = styled.div`
@@ -21,16 +25,39 @@ export const CreateBlogPageContainer = styled.div`
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
+
+  @media screen and (max-width: 800px) {
+    width: 300px;
+    height: 650px;
+    margin-top: 20px;
+  }
 `;
 
 export const SavePostButton = styled.button`
   margin-bottom: 30px;
   cursor: pointer;
+  width: 110px;
+  height: 33px;
+  border-radius: 24px;
+  border: 1px grey solid;
+
+  &:hover {
+    background: linear-gradient(45deg, #ed4264, #ffedbc);
+  }
+
+  @media screen and (max-width: 800px) {
+    margin-top: 10px;
+    height: 50px;
+  }
 `;
 
 export const PageContainer = styled.div`
   background: linear-gradient(45deg, #ed4264, #ffedbc);
-  height: 100vh;
+  min-height: 100vh;
+
+  @media screen and (max-width: 800px) {
+    padding-bottom: 30px;
+  }
 `;
 
 export const TitleContainer = styled.div`
@@ -44,4 +71,8 @@ export const FormContainer = styled.div`
   width: 100%;
   padding: 0 30px;
   background: white;
+
+  @media screen and (max-width: 800px) {
+    padding: 0 15px;
+  }
 `;

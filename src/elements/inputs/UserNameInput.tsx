@@ -1,4 +1,8 @@
-import { UserNameInputContainer, Label, UserNameInputField } from "./styles";
+import {
+  UserNameInputContainer,
+  UserNameLabel,
+  UserNameInputField,
+} from "./styles";
 
 type userNameInputType = {
   name: string;
@@ -15,7 +19,7 @@ const UserNameInput = ({
 }: userNameInputType) => {
   return (
     <UserNameInputContainer>
-      <Label>{label}</Label>
+      <UserNameLabel>{label}</UserNameLabel>
       <UserNameInputField
         name={name}
         value={value}

@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import CommentElement from "./CommentElement";
 import CommentForm from "./CommentForm";
+import { CommentPageContainer, CommentElementContainer } from "./styles";
 
 type commentType = {
   userName: string;
@@ -11,19 +12,21 @@ type commentType = {
 const CommentList = () => {
   const { comments } = useSelector((state: any) => state.comment);
   return (
-    <div>
+    <CommentPageContainer>
       <CommentForm />
-      {comments.map((comment: commentType) => {
-        return (
-          <CommentElement
-            user={comment.userName}
-            text={comment.text}
-            id={comment.id}
-            key={comment.id}
-          />
-        );
-      })}
-    </div>
+      <CommentElementContainer>
+        {comments.map((comment: commentType) => {
+          return (
+            <CommentElement
+              user={comment.userName}
+              text={comment.text}
+              id={comment.id}
+              key={comment.id}
+            />
+          );
+        })}
+      </CommentElementContainer>
+    </CommentPageContainer>
   );
 };
 

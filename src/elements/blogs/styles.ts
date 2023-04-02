@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const BlogCard = styled.div`
-  width: 60%;
+  width: 90%;
   height: 100px;
   display: flex;
   margin-left: auto;
@@ -13,6 +13,11 @@ export const BlogCard = styled.div`
   &:hover {
     box-shadow: 0px 6px 12px 3px rgba(0, 0, 0, 0.2);
     transform: translateY(-3px);
+  }
+
+  @media screen and (max-width: 800px) {
+    display: block;
+    height: 200px;
   }
 `;
 
@@ -27,24 +32,47 @@ export const TitleContainer = styled.div`
   align-items: center;
   cursor: pointer;
   border: 0;
+
+  @media screen and (max-width: 800px) {
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 
 export const Title = styled.p`
   font-size: 19px;
   font-weight: bold;
+
+  @media screen and (max-width: 800px) {
+    font-size: 13px;
+  }
 `;
 
 export const DateContainer = styled.div`
   width: 20%;
   height: 100px;
-  text-align: center;
+  justify-content: center;
   cursor: pointer;
   border: 0;
+
+  @media screen and (max-width: 800px) {
+    display: flex;
+    height: 30px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 
 export const Date = styled.p`
   font-size: 19px;
   margin-top: 25px;
+
+  @media screen and (max-width: 800px) {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 0;
+  }
 `;
 
 export const AdminButtonContainer = styled.div`
@@ -52,6 +80,13 @@ export const AdminButtonContainer = styled.div`
   height: 100px;
   justify-content: center;
   border: 0;
+
+  @media screen and (max-width: 800px) {
+    display: flex;
+    width: 100%;
+    height: 90px;
+    justify-content: space-between;
+  }
 `;
 
 export const ModifyBlogButton = styled.button`
@@ -63,8 +98,11 @@ export const ModifyBlogButton = styled.button`
   font-size: 22px;
   font-weight: bold;
   border: none;
-
   cursor: pointer;
+
+  &:hover {
+    transform: translateY(-3px);
+  }
 `;
 
 export const DeleteBlogButton = styled.button`
@@ -77,6 +115,10 @@ export const DeleteBlogButton = styled.button`
   border: 0;
   color: #870303;
   cursor: pointer;
+
+  &:hover {
+    transform: translateY(-3px);
+  }
 `;
 
 export const PageContainer = styled.div`
@@ -146,4 +188,40 @@ export const CreateBlogButton = styled.button`
   margin-right: auto;
   font-size: 35px;
   cursor: pointer;
+
+  &:hover {
+    animation-duration: 1s;
+    animation-name: move;
+    @keyframes move {
+      from {
+        transform: rotate(0);
+        width: 45px;
+        height: 45px;
+      }
+      to {
+        transform: rotate(360deg);
+        width: 60px;
+        height: 60px;
+      }
+    }
+    transform: rotate(360deg);
+    width: 60px;
+    height: 60px;
+    border-radius: 36px;
+  }
+
+  animation-duration: 1s;
+  animation-name: moveback;
+  @keyframes moveback {
+    from {
+      transform: rotate(0);
+      width: 60px;
+      height: 60px;
+    }
+    to {
+      transform: rotate(360deg);
+      width: 45px;
+      height: 45px;
+    }
+  }
 `;

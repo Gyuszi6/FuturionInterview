@@ -6,6 +6,9 @@ import {
   BlogTitle,
   LeavePageButton,
   BlogText,
+  PageContainer,
+  CommentCardContainer,
+  CurrentBlogImg,
 } from "./styles";
 import useBlogDisplayPage from "./hooks/useBlogDisplayPage";
 import { AiOutlineArrowLeft } from "react-icons/ai";
@@ -23,7 +26,7 @@ const BlogDisplayPage = () => {
     getComments(currentBlogId);
   }, [getComments, currentBlogId]);
   return (
-    <>
+    <PageContainer>
       <LeavePageButton
         onClick={() => {
           backToMainPage();
@@ -31,18 +34,19 @@ const BlogDisplayPage = () => {
       >
         <AiOutlineArrowLeft />
       </LeavePageButton>
-
       <CurrentBlogCard>
         <ImageContainer>
-          <img src={currentBlogImg} alt="img" />
+          <CurrentBlogImg src={currentBlogImg} alt="img" />
         </ImageContainer>
         <TextContainer>
           <BlogTitle>{currentBlogTitle}</BlogTitle>
           <BlogText>{currentBlogText}</BlogText>
         </TextContainer>
       </CurrentBlogCard>
-      <CommentList />
-    </>
+      <CommentCardContainer>
+        <CommentList />
+      </CommentCardContainer>
+    </PageContainer>
   );
 };
 

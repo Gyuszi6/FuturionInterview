@@ -37,7 +37,7 @@ const CreateBlogForm = () => {
                 label="Title:"
                 setFieldValue={setFieldValue}
               />
-              <SavePostButton type="submit">Save</SavePostButton>
+              <SavePostButton type="submit">Create</SavePostButton>
             </TitleContainer>
             <Field
               as={BlogTextInput}

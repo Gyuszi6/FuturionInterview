@@ -12,7 +12,6 @@ const useComment = () => {
         userName: userName,
         text: comment,
       });
-      console.log(currentBlogId);
     } catch (error) {
       console.log(error);
     }

@@ -2,7 +2,11 @@ import { Formik, Form, Field } from "formik";
 import * as yup from "yup";
 import UserNameInput from "../inputs/UserNameInput";
 import CommentTextInput from "../inputs/CommentTextInput";
-import { CreateCommentCard, CreateCommentButton } from "./styles";
+import {
+  CreateCommentCard,
+  CreateCommentButton,
+  CreateCommentButtonContainer,
+} from "./styles";
 import useComment from "./hooks/useComment";
 import { useSelector } from "react-redux";
 
@@ -11,7 +15,7 @@ const commentSchema = yup.object().shape({
     .string()
     .required("User name is required")
     .trim()
-    .matches(/^[A-Za-z0-9_ ]{1,20}$/i, "Incorrect User Name"),
+    .matches(/^[A-Za-z0-9_ ]{1,30}$/i, "Incorrect User Name"),
   comment: yup
     .string()
     .required("Comment text is required")
@@ -48,7 +52,9 @@ const CommentForm = () => {
               label="Comment"
               setFieldValue={setFieldValue}
             />
-            <CreateCommentButton type="submit">Comment</CreateCommentButton>
+            <CreateCommentButtonContainer>
+              <CreateCommentButton type="submit">Comment</CreateCommentButton>
+            </CreateCommentButtonContainer>
           </CreateCommentCard>
         </Form>
       )}

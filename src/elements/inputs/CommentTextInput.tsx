@@ -1,4 +1,8 @@
-import { CommentTextContainer, Label, CommentTextArea } from "./styles";
+import {
+  CommentTextContainer,
+  CommentTextLabel,
+  CommentTextArea,
+} from "./styles";
 
 type commentTextType = {
   name: string;
@@ -15,7 +19,7 @@ const CommentTextInput = ({
 }: commentTextType) => {
   return (
     <CommentTextContainer>
-      <Label>{label}</Label>
+      <CommentTextLabel>{label}</CommentTextLabel>
       <CommentTextArea
         name={name}
         value={value}
