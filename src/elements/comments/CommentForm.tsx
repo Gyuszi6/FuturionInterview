@@ -6,25 +6,21 @@ import {
   CreateCommentCard,
   CreateCommentButton,
   CreateCommentButtonContainer,
+  ErrorContainer,
+  ErrorMessage,
+  Container,
+  MobileErrorContainer,
 } from "./styles";
 import useComment from "./hooks/useComment";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../store/hooks/useRedux";
 
 const commentSchema = yup.object().shape({
-  userName: yup
-    .string()
-    .required("User name is required")
-    .trim()
-    .matches(/^[A-Za-z0-9_ ]{1,30}$/i, "Incorrect User Name"),
-  comment: yup
-    .string()
-    .required("Comment text is required")
-    .trim()
-    .matches(/^[A-Za-z0-9_ ]{1,300}$/i, "Incorrect Comment"),
+  userName: yup.string().required("User name is required").trim(),
+  comment: yup.string().required("Comment text is required").trim(),
 });
 
 const CommentForm = () => {
-  const { currentBlogId } = useSelector((state: any) => state.blog);
+  const { currentBlogId } = useAppSelector((state) => state.blog);
   const { createComment, getComments } = useComment();
   return (
     <Formik
@@ -37,24 +33,46 @@ const CommentForm = () => {
         await getComments(currentBlogId);
       }}
     >
-      {({ setFieldValue }) => (
+      {({ setFieldValue, errors, touched }) => (
         <Form>
           <CreateCommentCard>
-            <Field
-              as={UserNameInput}
-              name="userName"
-              label="UserName"
-              setFieldValue={setFieldValue}
-            />
+            <Container>
+              <Field
+                as={UserNameInput}
+                name="userName"
+                label="UserName"
+                setFieldValue={setFieldValue}
+                touched={touched["userName"]}
+                errors={errors["userName"]}
+              />
+              <ErrorContainer>
+                {Object.entries(errors).map(
+                  ([name, errorKey]) =>
+                    (touched["userName"] || touched["comment"]) && (
+                      <ErrorMessage key={name}>{errorKey}</ErrorMessage>
+                    )
+                )}
+              </ErrorContainer>
+            </Container>
             <Field
               as={CommentTextInput}
               name="comment"
               label="Comment"
               setFieldValue={setFieldValue}
+              touched={touched["comment"]}
+              errors={errors["comment"]}
             />
             <CreateCommentButtonContainer>
               <CreateCommentButton type="submit">Comment</CreateCommentButton>
             </CreateCommentButtonContainer>
+            <MobileErrorContainer>
+              {Object.entries(errors).map(
+                ([name, errorKey]) =>
+                  (touched["userName"] || touched["comment"]) && (
+                    <ErrorMessage key={name}>{errorKey}</ErrorMessage>
+                  )
+              )}
+            </MobileErrorContainer>
           </CreateCommentCard>
         </Form>
       )}

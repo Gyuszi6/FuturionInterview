@@ -3,7 +3,11 @@ import { useNavigate } from "react-router";
 
 const useModifyBlogs = () => {
   const nav = useNavigate();
-  const modifyBlogs = async (id: number, title: string, text: string) => {
+  const modifyBlogs = async (
+    id: number | string | null,
+    title: string | null,
+    text: string | null
+  ) => {
     try {
       await ApiInstance.put(`/BlogPost/${id}`, {
         title: title,

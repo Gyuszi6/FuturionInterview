@@ -4,7 +4,7 @@ import {
   UserNameInputField,
 } from "./styles";
 
-type userNameInputType = {
+type UserNameInputType = {
   name: string;
   setFieldValue: (name: string, val: string) => void;
   value: string;
@@ -16,7 +16,7 @@ const UserNameInput = ({
   setFieldValue,
   value,
   label,
-}: userNameInputType) => {
+}: UserNameInputType) => {
   return (
     <UserNameInputContainer>
       <UserNameLabel>{label}</UserNameLabel>

@@ -10,7 +10,7 @@ import {
 } from "./styles";
 import { AiFillDelete } from "react-icons/ai";
 import { BiEditAlt } from "react-icons/bi";
-import { useSelector, useDispatch } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../store/hooks/useRedux";
 import useBlogs from "./hooks/useBlogs";
 import useComment from "../comments/hooks/useComment";
 import {
@@ -23,15 +23,15 @@ import { useNavigate } from "react-router";
 type BlogType = {
   id: number;
   name: string;
-  date: any;
+  date: string;
   text: string;
 };
 
 const BlogElement = ({ id, name, date, text }: BlogType) => {
   const { getComments } = useComment();
   const { getCurrentBlog, deleteBlog, getBlogs } = useBlogs();
-  const dispatch = useDispatch();
-  const { userState } = useSelector((state: any) => state.user);
+  const dispatch = useAppDispatch();
+  const { userState } = useAppSelector((state) => state.user);
   const nav = useNavigate();
 
   return (

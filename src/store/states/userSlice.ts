@@ -1,6 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const initialState = {
+type UserType = {
+  userState: string | null;
+};
+
+const initialState: UserType = {
   userState: localStorage.getItem("currentState")
     ? localStorage.getItem("currentState")
     : "public",

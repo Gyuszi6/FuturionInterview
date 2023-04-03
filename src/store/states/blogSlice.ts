@@ -1,6 +1,23 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const initialState = {
+type BlogPropertyType = {
+  body: string;
+  createdAt: string;
+  id: number;
+  title: string;
+};
+
+type BlogType = {
+  blogs: BlogPropertyType[];
+  currentPage: number;
+  totalPage: number;
+  currentBlogId: number | string | null;
+  currentBlogTitle: string | null;
+  currentBlogText: string | null;
+  currentBlogImg: string | null;
+};
+
+const initialState: BlogType = {
   blogs: [],
   currentPage: Number(
     localStorage.getItem("currentPage")

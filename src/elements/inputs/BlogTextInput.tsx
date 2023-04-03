@@ -1,6 +1,6 @@
 import { BlogFormContentContainer, Label, BlogTextArea } from "./styles";
 
-type blogTextInputType = {
+type BlogTextInputType = {
   name: string;
   setFieldValue: (name: string, val: string) => void;
   value: string;
@@ -12,7 +12,7 @@ const BlogTextInput = ({
   setFieldValue,
   value,
   label,
-}: blogTextInputType) => {
+}: BlogTextInputType) => {
   return (
     <BlogFormContentContainer>
       <Label>{label}</Label>

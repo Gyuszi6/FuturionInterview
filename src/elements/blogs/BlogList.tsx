@@ -1,5 +1,5 @@
 import BlogElement from "./BlogElement";
-import { useSelector, useDispatch } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../store/hooks/useRedux";
 import useBlogs from "../../elements/blogs/hooks/useBlogs";
 import {
   PageContainer,
@@ -17,18 +17,26 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
 
+type BlogType = {
+  id: number;
+  title: string;
+  createdAt: string;
+  body: string;
+};
+
 const BlogList = () => {
   const { getBlogs, getBlogsFromCurrentPage } = useBlogs();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const nav = useNavigate();
-  const { blogs, currentPage, totalPage } = useSelector(
-    (state: any) => state.blog
+  const { blogs, currentPage, totalPage } = useAppSelector(
+    (state) => state.blog
   );
   useEffect(() => {
     getBlogs();
+    // eslint-disable-next-line
   }, []);
 
-  const { userState } = useSelector((state: any) => state.user);
+  const { userState } = useAppSelector((state) => state.user);
   return (
     <BlogListContainer>
       <PageContainer>
@@ -74,7 +82,7 @@ const BlogList = () => {
         </CreateBlogButtonContainer>
       )}
       <BlogCardContainer>
-        {blogs.map((blog: any) => {
+        {blogs.map((blog: BlogType) => {
           const date =
             blog.createdAt.slice(0, 10) +
             " " +

@@ -1,21 +1,21 @@
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../store/hooks/useRedux";
 import CommentElement from "./CommentElement";
 import CommentForm from "./CommentForm";
 import { CommentPageContainer, CommentElementContainer } from "./styles";
 
-type commentType = {
+type CommentType = {
   userName: string;
   text: string;
   id: number;
 };
 
 const CommentList = () => {
-  const { comments } = useSelector((state: any) => state.comment);
+  const { comments } = useAppSelector((state) => state.comment);
   return (
     <CommentPageContainer>
       <CommentForm />
       <CommentElementContainer>
-        {comments.map((comment: commentType) => {
+        {comments.map((comment: CommentType) => {
           return (
             <CommentElement
               user={comment.userName}

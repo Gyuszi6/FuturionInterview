@@ -2,27 +2,25 @@ import { Formik, Form, Field } from "formik";
 import * as yup from "yup";
 import TitleInput from "../../elements/inputs/TitleInput";
 import BlogTextInput from "../../elements/inputs/BlogTextInput";
-import { FormContainer, SavePostButton, TitleContainer } from "./styles";
+import {
+  FormContainer,
+  SavePostButton,
+  TitleContainer,
+  ErrorContainer,
+  ErrorMessage,
+} from "./styles";
 import useModifyBlogs from "./hooks/useModifyBlogs";
 import useBlogs from "../../elements/blogs/hooks/useBlogs";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../store/hooks/useRedux";
 
 const blogSchema = yup.object().shape({
-  title: yup
-    .string()
-    .required("Title is required")
-    .trim()
-    .matches(/^[A-Za-z0-9_ ]{1,30}$/i, "Incorrect title"),
-  blogText: yup
-    .string()
-    .required("Blog text is required")
-    .trim()
-    .matches(/^[A-Za-z0-9_ ]{1,500}$/i, "Incorrect blog text"),
+  title: yup.string().required("Title is required").trim(),
+  blogText: yup.string().required("Blog text is required").trim(),
 });
 
 const ModifyBlogForm = () => {
   const { currentPage, currentBlogId, currentBlogTitle, currentBlogText } =
-    useSelector((state: any) => state.blog);
+    useAppSelector((state) => state.blog);
   const { getBlogsFromCurrentPage } = useBlogs();
   const { modifyBlogs } = useModifyBlogs();
   return (
@@ -37,7 +35,7 @@ const ModifyBlogForm = () => {
           await getBlogsFromCurrentPage(currentPage);
         }}
       >
-        {({ setFieldValue }) => (
+        {({ setFieldValue, errors, touched }) => (
           <Form>
             <div>
               <TitleContainer>
@@ -46,6 +44,8 @@ const ModifyBlogForm = () => {
                   name="title"
                   label="Title:"
                   setFieldValue={setFieldValue}
+                  touched={touched["title"]}
+                  errors={errors["title"]}
                 />
                 <SavePostButton type="submit">Save</SavePostButton>
               </TitleContainer>
@@ -54,8 +54,18 @@ const ModifyBlogForm = () => {
                 name="blogText"
                 label="Blog"
                 setFieldValue={setFieldValue}
+                errors={errors["blogText"]}
+                touched={touched["blogText"]}
               />
             </div>
+            <ErrorContainer>
+              {Object.entries(errors).map(
+                ([name, errorKey]) =>
+                  (touched["title"] || touched["blogText"]) && (
+                    <ErrorMessage key={name}>{errorKey}</ErrorMessage>
+                  )
+              )}
+            </ErrorContainer>
           </Form>
         )}
       </Formik>

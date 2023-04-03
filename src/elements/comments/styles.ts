@@ -13,20 +13,27 @@ export const CreateCommentCard = styled.div`
   @media screen and (max-width: 800px) {
     display: block;
     justify-content: center;
+    height: 140px;
+    margin-bottom: 140px;
   }
 `;
 
 export const CommentCard = styled.div`
-  display: flex;
+  display: block;
   border: none;
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
   width: 80%;
-  height: 90px;
+  height: 100px;
   background: linear-gradient(45deg, #eb788f, #ffe3bc);
   border-radius: 8px;
   font-family: cursive;
+  overflow-y: auto;
+
+  @media screen and (max-width: 800px) {
+    height: 140px;
+  }
 `;
 
 export const CommentElementContainer = styled.div`
@@ -63,33 +70,64 @@ export const CreateCommentButton = styled.button`
     margin-top: 15px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 0;
   }
 `;
 
 export const UserNameText = styled.p`
-  margin-top: 26px;
+  margin-top: 0;
   font-weight: bold;
   font-size: 19px;
-
+  margin-bottom: 0;
+  margin-left: 20px;
   @media screen and (max-width: 800px) {
     font-size: 16px;
   }
 `;
 
 export const CommentText = styled.p`
-  margin-top: 10px;
+  margin-top: 0;
+  margin-left: 20px;
+  overflow-y: hidden;
 
   @media screen and (max-width: 800px) {
     font-size: 14px;
-    overflow-y: transparent scroll;
   }
 `;
 
 export const UserNameContainer = styled.div`
-  height: 100%;
-  width: 19%;
-  margin-right: 40px;
-  text-align: center;
+  margin-right: 0;
 `;
 
 export const CommentPageContainer = styled.div``;
+
+export const ErrorContainer = styled.div`
+  display: block;
+  margin-left: 20px;
+
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
+`;
+
+export const ErrorMessage = styled.p`
+  color: red;
+  font-weight: bold;
+  font-size: 16px;
+
+  @media screen and (max-width: 800px) {
+    font-size: 12px;
+  }
+`;
+
+export const MobileErrorContainer = styled.div`
+  display: none;
+
+  @media screen and (max-width: 800px) {
+    display: block;
+    text-align: center;
+    margin-top: 0;
+  }
+`;
+
+export const Container = styled.div``;

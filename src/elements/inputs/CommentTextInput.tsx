@@ -4,7 +4,7 @@ import {
   CommentTextArea,
 } from "./styles";
 
-type commentTextType = {
+type CommentTextType = {
   name: string;
   setFieldValue: (name: string, val: string) => void;
   value: string;
@@ -16,7 +16,7 @@ const CommentTextInput = ({
   setFieldValue,
   value,
   label,
-}: commentTextType) => {
+}: CommentTextType) => {
   return (
     <CommentTextContainer>
       <CommentTextLabel>{label}</CommentTextLabel>

@@ -1,6 +1,6 @@
 import { ApiInstance } from "../../../api/api";
 import { useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks/useRedux";
 import {
   SET_BLOGS,
   SET_CURRENT_BLOG_ID,
@@ -14,8 +14,8 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 
 const useBlogs = () => {
-  const { currentPage } = useSelector((state: any) => state.blog);
-  const dispatch = useDispatch();
+  const { currentPage } = useAppSelector((state) => state.blog);
+  const dispatch = useAppDispatch();
   const nav = useNavigate();
 
   const getBlogs = useCallback(async () => {

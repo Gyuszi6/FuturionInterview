@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../store/hooks/useRedux";
 import {
   CurrentBlogCard,
   ImageContainer,
@@ -18,7 +18,7 @@ import { useEffect } from "react";
 
 const BlogDisplayPage = () => {
   const { currentBlogTitle, currentBlogText, currentBlogImg, currentBlogId } =
-    useSelector((state: any) => state.blog);
+    useAppSelector((state) => state.blog);
   const { backToMainPage } = useBlogDisplayPage();
   const { getComments } = useComment();
 
@@ -36,7 +36,7 @@ const BlogDisplayPage = () => {
       </LeavePageButton>
       <CurrentBlogCard>
         <ImageContainer>
-          <CurrentBlogImg src={currentBlogImg} alt="img" />
+          {currentBlogImg && <CurrentBlogImg src={currentBlogImg} alt="img" />}
         </ImageContainer>
         <TextContainer>
           <BlogTitle>{currentBlogTitle}</BlogTitle>

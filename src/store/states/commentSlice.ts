@@ -1,6 +1,17 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const initialState = {
+type CommentPropertyType = {
+  createdAt: string;
+  id: number;
+  text: string;
+  userName: string;
+};
+
+type CommentType = {
+  comments: CommentPropertyType[];
+};
+
+const initialState: CommentType = {
   comments: [],
 };
 

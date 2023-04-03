@@ -110,7 +110,7 @@ export const BlogTitleInputBox = styled.input`
   margin-left: auto;
   margin-right: auto;
   display: flex;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
   border: none;
   background: rgba(0, 0, 0, 0.05);
   box-shadow: 0 3px 12px 4px rgba(0, 0, 0, 0.2);
@@ -120,7 +120,6 @@ export const BlogTitleInputBox = styled.input`
 
   @media screen and (max-width: 800px) {
     width: 100px;
-    margin-bottom: 30px;
   }
 `;
 

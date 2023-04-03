@@ -25,6 +25,7 @@ export const CreateBlogPageContainer = styled.div`
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
+  padding-bottom: 20px;
 
   @media screen and (max-width: 800px) {
     width: 300px;
@@ -34,7 +35,7 @@ export const CreateBlogPageContainer = styled.div`
 `;
 
 export const SavePostButton = styled.button`
-  margin-bottom: 30px;
+  margin-bottom: 0;
   cursor: pointer;
   width: 110px;
   height: 33px;
@@ -56,7 +57,6 @@ export const PageContainer = styled.div`
   min-height: 100vh;
 
   @media screen and (max-width: 800px) {
-    padding-bottom: 30px;
   }
 `;
 
@@ -65,6 +65,7 @@ export const TitleContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 30px;
+  margin-bottom: 0;
 `;
 
 export const FormContainer = styled.div`
@@ -74,5 +75,24 @@ export const FormContainer = styled.div`
 
   @media screen and (max-width: 800px) {
     padding: 0 15px;
+  }
+`;
+
+export const ErrorContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  @media screen and (max-width: 800px) {
+    margin-top: 5px;
+  }
+`;
+
+export const ErrorMessage = styled.p`
+  color: red;
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 0;
+
+  @media screen and (max-width: 800px) {
+    font-size: 12px;
   }
 `;

@@ -5,13 +5,13 @@ import {
   UserNameContainer,
 } from "./styles";
 
-type commentType = {
+type CommentType = {
   user: string;
   text: string;
   id: number;
 };
 
-const CommentElement = ({ user, text, id }: commentType) => {
+const CommentElement = ({ user, text, id }: CommentType) => {
   return (
     <CommentCard key={id}>
       <UserNameContainer>

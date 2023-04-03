@@ -4,14 +4,14 @@ import {
   BlogTitleInputBox,
 } from "./styles";
 
-type titleInputType = {
+type TitleInputType = {
   name: string;
   setFieldValue: (name: string, val: string) => void;
   value: string;
   label: string;
 };
 
-const TitleInput = ({ name, setFieldValue, value, label }: titleInputType) => {
+const TitleInput = ({ name, setFieldValue, value, label }: TitleInputType) => {
   return (
     <BlogFormInputContainer>
       <BlogTitleLabel>{label}</BlogTitleLabel>

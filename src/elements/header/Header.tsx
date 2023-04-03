@@ -1,9 +1,9 @@
 import { HeaderButton, HeaderButtonContainer, HeaderContainer } from "./styles";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../store/hooks/useRedux";
 import { SET_USER } from "../../store/states/userSlice";
 
 const Header = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   return (
     <HeaderContainer>
       <HeaderButtonContainer>
