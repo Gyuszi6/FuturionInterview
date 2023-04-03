@@ -66,7 +66,7 @@ export const DateContainer = styled.div`
 
 export const Date = styled.p`
   font-size: 19px;
-  margin-top: 25px;
+  margin-top: 20px;
 
   @media screen and (max-width: 800px) {
     font-size: 12px;
@@ -223,5 +223,32 @@ export const CreateBlogButton = styled.button`
       width: 45px;
       height: 45px;
     }
+  }
+`;
+
+export const Spinner = styled.div`
+  border-top: 3px solid grey;
+  border-right: 3px solid grey;
+  border-bottom: 3px solid grey;
+  border-left: 5px solid black;
+  background: transparent;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 48%;
+  animation: rotate 1s linear infinite;
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    left: 45%;
   }
 `;

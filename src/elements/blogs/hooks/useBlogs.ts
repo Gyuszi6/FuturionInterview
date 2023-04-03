@@ -8,6 +8,7 @@ import {
   SET_CURRENT_BLOG_TEXT,
   SET_CURRENT_BLOG_TITLE,
   SET_CURRENT_PAGE,
+  SET_LOADING,
   SET_TOTAL_PAGE,
 } from "../../../store/states/blogSlice";
 import { useNavigate } from "react-router";
@@ -20,6 +21,7 @@ const useBlogs = () => {
 
   const getBlogs = useCallback(async () => {
     try {
+      dispatch(SET_LOADING(true));
       const response = await ApiInstance.get(
         `/BlogPost?page=${currentPage}&pageSize=12`
       );
@@ -29,6 +31,8 @@ const useBlogs = () => {
       dispatch(SET_BLOGS(data.results));
     } catch (error) {
       console.log(error);
+    } finally {
+      dispatch(SET_LOADING(false));
     }
   }, [dispatch, currentPage]);
 

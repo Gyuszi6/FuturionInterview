@@ -15,6 +15,7 @@ type BlogType = {
   currentBlogTitle: string | null;
   currentBlogText: string | null;
   currentBlogImg: string | null;
+  loading: boolean;
 };
 
 const initialState: BlogType = {
@@ -39,6 +40,7 @@ const initialState: BlogType = {
   currentBlogImg: localStorage.getItem("currentBlogImg")
     ? localStorage.getItem("currentBlogImg")
     : "",
+  loading: false,
 };
 
 const blogSlice = createSlice({
@@ -72,6 +74,9 @@ const blogSlice = createSlice({
       state.currentBlogImg = action.payload;
       localStorage.setItem("currentBlogImg", action.payload);
     },
+    SET_LOADING: (state, action: PayloadAction<boolean>) => {
+      state.loading = action.payload;
+    },
   },
 });
 
@@ -83,6 +88,7 @@ export const {
   SET_CURRENT_BLOG_IMG,
   SET_CURRENT_BLOG_TEXT,
   SET_CURRENT_BLOG_TITLE,
+  SET_LOADING,
 } = blogSlice.actions;
 
 export default blogSlice.reducer;

@@ -11,6 +11,7 @@ import {
   HorizontalDivider,
   BlogCardContainer,
   CreateButtonLabel,
+  Spinner,
 } from "./styles";
 import { SET_CURRENT_PAGE } from "../../store/states/blogSlice";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
@@ -28,7 +29,7 @@ const BlogList = () => {
   const { getBlogs, getBlogsFromCurrentPage } = useBlogs();
   const dispatch = useAppDispatch();
   const nav = useNavigate();
-  const { blogs, currentPage, totalPage } = useAppSelector(
+  const { blogs, currentPage, totalPage, loading } = useAppSelector(
     (state) => state.blog
   );
   useEffect(() => {
@@ -81,6 +82,7 @@ const BlogList = () => {
           </CreateButtonLabel>
         </CreateBlogButtonContainer>
       )}
+      {blogs.length === 0 && loading && <Spinner />}
       <BlogCardContainer>
         {blogs.map((blog: BlogType) => {
           const date =
