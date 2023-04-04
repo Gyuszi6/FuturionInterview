@@ -13,11 +13,11 @@ type CommentType = {
 
 const CommentElement = ({ user, text, id }: CommentType) => {
   return (
-    <CommentCard key={id}>
+    <CommentCard data-testid="commentCardTestId" key={id}>
       <UserNameContainer>
-        <UserNameText>{user}</UserNameText>
+        <UserNameText data-testid="userNameTestId">{user}</UserNameText>
       </UserNameContainer>
-      <CommentText>{text}</CommentText>
+      <CommentText data-testid="commentTextTestId">{text}</CommentText>
     </CommentCard>
   );
 };

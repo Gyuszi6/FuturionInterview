@@ -16,6 +16,7 @@ const TitleInput = ({ name, setFieldValue, value, label }: TitleInputType) => {
     <BlogFormInputContainer>
       <BlogTitleLabel>{label}</BlogTitleLabel>
       <BlogTitleInputBox
+        data-testid="BlogTitleInputTestId"
         name={name}
         value={value}
         onChange={(event) => setFieldValue(name, event.target.value)}

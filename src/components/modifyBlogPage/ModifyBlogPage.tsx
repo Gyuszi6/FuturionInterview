@@ -12,6 +12,7 @@ const ModifyBlogpage = () => {
   return (
     <PageContainer>
       <LeavePageButton
+        data-testid="ModifyPageLeaveButtonTestId"
         onClick={() => {
           nav("/home");
         }}

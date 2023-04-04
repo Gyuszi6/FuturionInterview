@@ -17,6 +17,7 @@ const BlogTextInput = ({
     <BlogFormContentContainer>
       <Label>{label}</Label>
       <BlogTextArea
+        data-testid="BlogTextInputTestId"
         name={name}
         value={value}
         onChange={(event) => setFieldValue(name, event.target.value)}
