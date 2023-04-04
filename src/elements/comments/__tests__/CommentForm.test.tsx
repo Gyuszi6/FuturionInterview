@@ -33,7 +33,9 @@ describe("CommentForm test", () => {
     render(<CommentForm />);
     userEvent.type(screen.getByTestId("commentTextAreaTestId"), "username");
     userEvent.type(screen.getByTestId("userNameInputTestId"), "comment text");
+
     fireEvent.click(screen.getByTestId("createCommentButtonTestId"));
+
     await waitFor(() => {
       expect(mockedCreateComment).toHaveBeenCalled();
     });
