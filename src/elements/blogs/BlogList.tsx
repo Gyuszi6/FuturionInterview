@@ -40,8 +40,9 @@ const BlogList = () => {
   const { userState } = useAppSelector((state) => state.user);
   return (
     <BlogListContainer>
-      <PageContainer>
+      <PageContainer data-testid="changePageContainerTestId">
         <ChangePageButton
+          data-testid="prevPageButtonTestId"
           onClick={async () => {
             if (currentPage > 1) {
               dispatch(SET_CURRENT_PAGE(Number(currentPage) - 1));
@@ -51,9 +52,10 @@ const BlogList = () => {
         >
           <AiOutlineArrowLeft />
         </ChangePageButton>
-        <PageText>{currentPage} - </PageText>
-        <PageText> / {totalPage}</PageText>
+        <PageText data-testid="currentPageTestId">{currentPage} - </PageText>
+        <PageText data-testid="totalPageTestId"> / {totalPage}</PageText>
         <ChangePageButton
+          data-testid="nextPageButtonTestId"
           onClick={async () => {
             if (currentPage < totalPage) {
               dispatch(SET_CURRENT_PAGE(Number(currentPage) + 1));
@@ -67,6 +69,7 @@ const BlogList = () => {
       {userState === "admin" && (
         <CreateBlogButtonContainer>
           <CreateBlogButton
+            data-testid="createBlogButtonTestId"
             onClick={() => {
               nav("/create");
             }}
@@ -74,6 +77,7 @@ const BlogList = () => {
             +
           </CreateBlogButton>
           <CreateButtonLabel
+            data-testid="createBlogLabelTestId"
             onClick={() => {
               nav("/create");
             }}
@@ -82,8 +86,8 @@ const BlogList = () => {
           </CreateButtonLabel>
         </CreateBlogButtonContainer>
       )}
-      {blogs.length === 0 && loading && <Spinner />}
-      <BlogCardContainer>
+      {blogs.length === 0 && loading && <Spinner data-testid="spinnerTestId" />}
+      <BlogCardContainer data-testid="blogCardContainerTestId">
         {blogs.map((blog: BlogType) => {
           const date =
             blog.createdAt.slice(0, 10) +

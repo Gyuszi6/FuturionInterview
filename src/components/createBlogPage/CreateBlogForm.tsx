@@ -45,7 +45,12 @@ const CreateBlogForm = () => {
                 touched={touched["title"]}
                 errors={errors["title"]}
               />
-              <SavePostButton type="submit">Create</SavePostButton>
+              <SavePostButton
+                data-testid="CreatePostButtonTestId"
+                type="submit"
+              >
+                Create
+              </SavePostButton>
             </TitleContainer>
 
             <Field

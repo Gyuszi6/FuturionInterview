@@ -8,6 +8,7 @@ const Header = () => {
     <HeaderContainer>
       <HeaderButtonContainer>
         <HeaderButton
+          data-testid="publicButtonTestId"
           onClick={() => {
             dispatch(SET_USER("public"));
           }}
@@ -15,6 +16,7 @@ const Header = () => {
           Public
         </HeaderButton>
         <HeaderButton
+          data-testid="adminButtonTestId"
           onClick={() => {
             dispatch(SET_USER("admin"));
           }}

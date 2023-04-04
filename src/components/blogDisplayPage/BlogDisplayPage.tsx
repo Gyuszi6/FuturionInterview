@@ -23,24 +23,37 @@ const BlogDisplayPage = () => {
   const { getComments } = useComment();
 
   useEffect(() => {
-    getComments(currentBlogId);
+    (async () => {
+      await getComments(currentBlogId);
+    })();
   }, [getComments, currentBlogId]);
   return (
     <PageContainer>
       <LeavePageButton
+        data-testid="leavePageButtonTestId"
         onClick={() => {
           backToMainPage();
         }}
       >
         <AiOutlineArrowLeft />
       </LeavePageButton>
-      <CurrentBlogCard>
+      <CurrentBlogCard data-testid="currentBlogCardTestId">
         <ImageContainer>
-          {currentBlogImg && <CurrentBlogImg src={currentBlogImg} alt="img" />}
+          {currentBlogImg && (
+            <CurrentBlogImg
+              data-testid="currentBlogImgTestId"
+              src={currentBlogImg}
+              alt="img"
+            />
+          )}
         </ImageContainer>
         <TextContainer>
-          <BlogTitle>{currentBlogTitle}</BlogTitle>
-          <BlogText>{currentBlogText}</BlogText>
+          <BlogTitle data-testid="currentBlogTitleTestId">
+            {currentBlogTitle}
+          </BlogTitle>
+          <BlogText data-testid="currentBlogTextTestId">
+            {currentBlogText}
+          </BlogText>
         </TextContainer>
       </CurrentBlogCard>
       <CommentCardContainer>

@@ -37,24 +37,27 @@ const BlogElement = ({ id, name, date, text }: BlogType) => {
   return (
     <BlogCard key={id}>
       <TitleContainer
+        data-testid="TitleContainerTestId"
         onClick={async () => {
           await getCurrentBlog(id);
           await getComments(id);
         }}
       >
-        <Title>{name}</Title>
+        <Title data-testid="blogTitleTestId">{name}</Title>
       </TitleContainer>
       <DateContainer
+        data-testid="dateContainerTestId"
         onClick={async () => {
           await getCurrentBlog(id);
           await getComments(id);
         }}
       >
-        <Date>{date}</Date>
+        <Date data-testid="blogDateTestId">{date}</Date>
       </DateContainer>
       {userState === "admin" && (
         <AdminButtonContainer>
           <ModifyBlogButton
+            data-testid="blogModifyButtonTestId"
             onClick={() => {
               dispatch(SET_CURRENT_BLOG_ID(id));
               dispatch(SET_CURRENT_BLOG_TITLE(name));
@@ -65,6 +68,7 @@ const BlogElement = ({ id, name, date, text }: BlogType) => {
             <BiEditAlt />
           </ModifyBlogButton>
           <DeleteBlogButton
+            data-testid="blogDeleteButtonTestId"
             onClick={async () => {
               await deleteBlog(id);
               await getBlogs();

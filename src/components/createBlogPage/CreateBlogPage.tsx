@@ -12,6 +12,7 @@ const CreateBlogPage = () => {
   return (
     <PageContainer>
       <LeavePageButton
+        data-testid="LeaveCreateBlogPageButtonTestId"
         onClick={() => {
           nav("/home");
         }}

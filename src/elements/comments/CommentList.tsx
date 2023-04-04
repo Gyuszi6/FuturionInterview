@@ -12,9 +12,9 @@ type CommentType = {
 const CommentList = () => {
   const { comments } = useAppSelector((state) => state.comment);
   return (
-    <CommentPageContainer>
+    <CommentPageContainer data-testid="commentContainerTestId">
       <CommentForm />
-      <CommentElementContainer>
+      <CommentElementContainer data-testid="commentListTestId">
         {comments.map((comment: CommentType) => {
           return (
             <CommentElement

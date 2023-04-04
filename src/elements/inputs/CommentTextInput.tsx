@@ -21,6 +21,7 @@ const CommentTextInput = ({
     <CommentTextContainer>
       <CommentTextLabel>{label}</CommentTextLabel>
       <CommentTextArea
+        data-testid="commentTextAreaTestId"
         name={name}
         value={value}
         onChange={(event) => setFieldValue(name, event.target.value)}

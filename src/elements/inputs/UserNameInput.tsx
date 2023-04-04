@@ -21,6 +21,7 @@ const UserNameInput = ({
     <UserNameInputContainer>
       <UserNameLabel>{label}</UserNameLabel>
       <UserNameInputField
+        data-testid="userNameInputTestId"
         name={name}
         value={value}
         onChange={(event) => setFieldValue(name, event.target.value)}

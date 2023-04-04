@@ -63,7 +63,12 @@ const CommentForm = () => {
               errors={errors["comment"]}
             />
             <CreateCommentButtonContainer>
-              <CreateCommentButton type="submit">Comment</CreateCommentButton>
+              <CreateCommentButton
+                data-testid="createCommentButtonTestId"
+                type="submit"
+              >
+                Comment
+              </CreateCommentButton>
             </CreateCommentButtonContainer>
             <MobileErrorContainer>
               {Object.entries(errors).map(

@@ -47,7 +47,12 @@ const ModifyBlogForm = () => {
                   touched={touched["title"]}
                   errors={errors["title"]}
                 />
-                <SavePostButton type="submit">Save</SavePostButton>
+                <SavePostButton
+                  data-testid="ModifyBlogButtonTestId"
+                  type="submit"
+                >
+                  Save
+                </SavePostButton>
               </TitleContainer>
               <Field
                 as={BlogTextInput}
