@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const ApiInstance = axios.create({
-  baseURL: "https://futurioninterview.azurewebsites.net/",
+  baseURL: "https://futurioninterview2.azurewebsites.net/",
   headers: {
     "content-type": "application/json",
   },
